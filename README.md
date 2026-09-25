@@ -232,9 +232,6 @@ Strong uppercase headings
 Minimal card design
 Responsive layouts
 Clear workout statistics
-
-# Primary accent color:
-#CCFF00
 ## 📱 Responsive Behavior
 The interface adapts to different screen sizes.
 Desktop
