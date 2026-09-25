@@ -168,6 +168,7 @@ Mobile
 Tablet
 Desktop
 ## 📂 Project Structure
+----------
 B14-A6-Fit-Log/
 │
 ├── public/
@@ -206,6 +207,7 @@ B14-A6-Fit-Log/
 ├── next.config.ts
 ├── tsconfig.json
 └── README.md
+-----
 ## 💻 Getting Started
 1. Clone the repository
 git clone YOUR_GITHUB_REPOSITORY_URL
