@@ -53,102 +53,100 @@ https://api.abcz.workers.dev/api/fitlog
 The application fetches workout data dynamically from the API.
 
 ## Features
-# 1. Responsive Navigation
-FitLog logo
-Workout navigation
-My Plan navigation
-Plan counter
-Saved counter
-Responsive mobile navigation
-Active navigation state
-# 2. Hero Section
-WORKOUT LIBRARY eyebrow
-Main heading:
-TRAIN WITH INTENT. LOG EVERY SET.
-Workout-focused introduction
-Browse Workouts CTA
-Responsive workout banner
-# 3. Workout Library
-Displays workouts from the API
-Responsive workout cards
-Muscle group tags
-Workout name
-Equipment
-Duration
-Calories
-Rating
+### Responsive Navigation
+- FitLog Logo
+- Workout Navigation
+- My Plan Navigation
+- Plan Counter
+- Saved Counter
+- Responsive Mobile Navigation
+- Active Navigation State
+### 2. Hero Section
+- WORKOUT LIBRARY eyebrow
+- Main heading:
+- TRAIN WITH INTENT. LOG EVERY SET.
+- Workout-focused introduction
+- Browse Workouts CTA
+- Responsive workout banner
+### 3. Workout Library
+- Displays workouts from the API
+- Responsive workout cards
+- Muscle group tags
+- Workout name
+- Equipment
+- Duration
+- Calories
+- Rating
 View workout details
-# 4. Workout Details
-Each workout detail page includes:
-Large workout image
-Workout title
-Muscle group tags
-Description
-Equipment
-Difficulty
-Sets
-Reps
-Duration
-Calories
-Rating
-Exercise instructions
-Add to Today's Plan
-Save for Later
+### 4. Workout Details
+- Each workout detail page includes:
+- Large workout image
+- Workout title
+- Muscle group tags
+- Description
+- Equipment
+- Difficulty
+- Sets
+- Reps
+- Duration
+- Calories
+- Rating
+- Exercise instructions
+- Add to Today's Plan
+- Save for Later
 
-# 5. My Plan
-The My Plan page includes:
-Today's workout plan
-Saved workouts
-Exercise counter
-Total workout minutes
-Total calories
-Maximum five exercises
-Duration sorting
-Calories sorting
-Rating sorting
-Workout thumbnails
-Equipment information
-Duration
-Calories
-Rating
-View Details
-Mark as Done
-Remove workout
+###  5. My Plan
+- The My Plan page includes:
+- Today's workout plan
+- Saved workouts
+- Exercise counter
+- Total workout minutes
+- Total calories
+- Maximum five exercises
+- Duration sorting
+- Calories sorting
+- Rating sorting
+- Workout thumbnails
+- Equipment information
+- Duration
+- Calories
+- Rating
+- View Details
+- Mark as Done
+- Remove workout
 
-# 6. Saved Workouts
-Users can save workouts for later.
-Saved workouts are available from the Saved tab on the My Plan page.
+### 6. Saved Workouts
+- Users can save workouts for later.
+- Saved workouts are available from the Saved tab on the My Plan page.
 
 # 7. Mark as Done
-Users can mark a workout as completed.
-The workout is removed from Today's Plan and a confirmation toast is displayed.
+- Users can mark a workout as completed.
+- The workout is removed from Today's Plan and a confirmation toast is displayed.
 
 # 8. LocalStorage
-FitLog stores:
-Today's workout plan
-Saved workouts
+- FitLog stores:
+- Today's workout plan
+- Saved workouts
+- in the browser's localStorage so the user's selections remain after refreshing the page.
+### 9. Toast Notifications
+#### The application provides feedback for actions such as:
+- Workout added to plan
+- Workout removed
+- Workout saved
+- Workout already saved
+- Workout marked as done
+- Plan limit reached
 
-in the browser's localStorage so the user's selections remain after refreshing the page.
-
-# 9. Toast Notifications
-The application provides feedback for actions such as:
-Workout added to plan
-Workout removed
-Workout saved
-Workout already saved
-Workout marked as done
-Plan limit reached
-
-# 10. Loading State
+###  10. Loading State
 A custom loading screen is provided while pages are loading.
 
-# 11. Custom 404 Page
+###  11. Custom 404 Page
 FitLog includes a custom 404 page for unavailable routes and workouts.
 # 12. Responsive Design
-The application is designed for:
-Mobile
-Tablet
-Desktop
+- The application is designed for:
+- Mobile
+- Tablet
+- Desktop
 
 ## 📂 Project Structure
 ----------
@@ -203,91 +201,88 @@ npm run dev
 Open:
 http://localhost:3000
 
-🏗️ Production Build
+## 🏗️ Production Build
 To check the production build:
 npm run build
 To start the production server:
 npm start
 
 ## 🎨 Design
-# FitLog uses a dark fitness-focused visual style with:
-Black background
-White typography
-Acid green accent color
-Strong uppercase headings
-Minimal card design
-Responsive layouts
+#### FitLog uses a dark fitness-focused visual style with:
+- Black background
+- White typography
+- Acid green accent color
+- Strong uppercase headings
+- Minimal card design
+- Responsive layouts
 Clear workout statistics
 
 ## 📱 Responsive Behavior
-The interface adapts to different screen sizes.
-Desktop
-Three-column workout library
-Two-column workout detail
-Full navigation
-Expanded workout cards
-Tablet
-Responsive two-column layouts where appropriate
-Adapted navigation and spacing
-Mobile
-Single-column workout cards
-Mobile navigation
-Stacked action buttons
-Responsive typography
-Touch-friendly controls
+- The interface adapts to different screen sizes.
+- Desktop
+- Three-column workout library
+- Two-column workout detail
+- Full navigation
+- Expanded workout cards
+- Tablet
+- Responsive two-column layouts where appropriate
+- Adapted navigation and spacing
+- Mobile
+- Single-column workout cards
+- Mobile navigation
+- Stacked action buttons
+- Responsive typography
+- Touch-friendly controls
 
 ## 📋 Assignment Requirements Covered
- Responsive design
- Navbar
- Workout library
- Workout cards
- Workout details
- My Plan page
- Saved workouts
- Add to Today's Plan
- Remove workout
- Mark as Done
- Toast notifications
- Loading state
- Custom 404 page
- Sorting
- LocalStorage
- Responsive mobile/tablet/desktop layout
- Git/GitHub version control
- Production build
+ - Responsive design
+ - Navbar
+ - Workout library
+ - Workout cards
+ - Workout details
+ - My Plan page
+ - Saved workouts
+ - Add to Today's Plan
+ - Remove workout
+ - Mark as Done
+ - Toast notifications
+ - Loading state
+ - Custom 404 page
+ - Sorting
+ - LocalStorage
+ - Responsive mobile/tablet/desktop layout
+ - Git/GitHub version control
+ - Production build
  
 ##  Learning & Implementation
-This project was developed as part of a Programming Hero assignment.
-I used learning resources and examples to understand:
-React fundamentals
-Next.js App Router
-TypeScript
-Component-based development
-API integration
-Client-side state management
-LocalStorage
-Responsive UI development
-Tailwind CSS
-Git and GitHub
-The project was implemented and customized for the FitLog assignment based on my own understanding of the technologies.
+- This project was developed as part of a Programming Hero assignment.
+- I used learning resources and examples to understand:
+- React fundamentals
+- Next.js App Router
+- TypeScript
+- Component-based development
+- API integration
+- Client-side state management
+- LocalStorage
+- Responsive UI development
+- Tailwind CSS
+- Git and GitHub
+- The project was implemented and customized for the FitLog assignment based on my own understanding of the technologies.
 
 ## 🙏 Acknowledgements
 Special thanks to Jhankar Mahbub  and Ahashan Habib Utsho for their educational guidance and coding resources.
 Their teaching helped me better understand concepts including:
-React and Next.js
-Component-based development
-API integration
-Routing
-Responsive web development
-State management
-Modern frontend project structure
-Learning Sources
-Jhankar Mahbub — Programming Hero
-Ahashan Habib Utsho— Web Development learning resources
+- React and Next.js
+- Component-based development
+- API integration
+- Routing
+- Responsive web development
+- State management
+- Modern frontend project structure
+- Learning Sources:
+    - Programming Hero-Web Development learning resources
+- This project is an educational implementation and is not presented as an original reproduction of any instructor's project.
 
-This project is an educational implementation and is not presented as an original reproduction of any instructor's project.
-
-👨‍💻 Author
-Mahbubul Alam
-
-FitLog — Workout Library
+## 👨‍💻 Author
+- Mahbubul Alam FitLog 
+- Workout Library
