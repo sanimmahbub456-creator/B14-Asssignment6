@@ -77,7 +77,7 @@ export default function Plan() {
         {/* ================= HEADER ================= */}
 
         <div className="border-b border-[#292929] pb-8">
-          <h1 className="display text-4xl font-black uppercase leading-none sm:text-6xl">
+          <h1 className="display text-6xl font-black uppercase leading-none sm:text-7xl">
             MY PLAN
           </h1>
 
@@ -135,14 +135,14 @@ export default function Plan() {
 
         {/* ================= SORT ================= */}
 
-        <div className="mt-6 flex items-center justify-between gap-4">
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-[#777]">
             {tab === "plan"
               ? "Today's Plan"
               : "Saved Workouts"}
           </p>
 
-          <div className="relative flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <span className="text-xs font-black uppercase tracking-wider text-[#777]">
               Sort By
             </span>
@@ -183,12 +183,12 @@ export default function Plan() {
 
         {activeWorkouts.length === 0 && (
           <div className="mt-8 rounded-2xl border border-[#292929] bg-[#111] px-6 py-20 text-center">
-            <h2 className="display text-2xl font-black uppercase leading-none text-white sm:text-3xl">
+            <h2 className="display text-5xl font-black uppercase leading-none text-white sm:text-7xl">
               NOTHING HERE YET
             </h2>
 
             <p className="mx-auto mt-6 max-w-md text-sm leading-6 text-[#777]">
-              Browse the library and add a lift to get today moving.
+              Browse the library and add a lift to get today's plan moving.
             </p>
 
             <Link
@@ -211,7 +211,7 @@ export default function Plan() {
               >
                 <div className="flex flex-col sm:flex-row">
 
-                  {/* IMAGE */}
+                  {/* ================= IMAGE ================= */}
 
                   <div className="h-48 w-full shrink-0 sm:h-auto sm:w-56">
                     <img
@@ -221,16 +221,17 @@ export default function Plan() {
                     />
                   </div>
 
-                  {/* CONTENT */}
+                  {/* ================= CARD CONTENT ================= */}
 
-                  <div className="flex flex-1 flex-col p-5">
+                  <div className="flex min-w-0 flex-1 flex-col p-5">
 
-                    {/* TITLE + REMOVE */}
+                    <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
 
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
+                      {/* ================= WORKOUT INFO ================= */}
 
-                        {/* TAGS */}
+                      <div className="min-w-0 flex-1">
+
+                        {/* MUSCLE GROUPS */}
 
                         <div className="flex flex-wrap gap-2">
                           {workout.muscleGroups
@@ -245,9 +246,9 @@ export default function Plan() {
                             ))}
                         </div>
 
-                        {/* WORKOUT TITLE */}
+                        {/* WORKOUT NAME */}
 
-                        <h2 className="mt-3 text-xl font-black uppercase">
+                        <h2 className="mt-3 text-xl font-black uppercase leading-tight">
                           {workout.name}
                         </h2>
 
@@ -256,85 +257,80 @@ export default function Plan() {
                         <p className="mt-1 text-xs text-[#777]">
                           {workout.equipment}
                         </p>
+
+                        {/* STATS */}
+
+                        <div className="mt-5 flex flex-wrap gap-5 border-t border-[#292929] pt-4">
+
+                          <div className="flex items-center gap-2 text-xs text-[#999]">
+                            <Clock3 size={15} />
+                            <span>
+                              {workout.duration} min
+                            </span>
+                          </div>
+
+                          <div className="flex items-center gap-2 text-xs text-[#999]">
+                            <Flame size={15} />
+                            <span>
+                              {workout.caloriesBurned} kcal
+                            </span>
+                          </div>
+
+                          <div className="flex items-center gap-2 text-xs text-[#999]">
+                            <Star size={15} />
+                            <span>
+                              {workout.rating}
+                            </span>
+                          </div>
+
+                        </div>
                       </div>
 
-                      {/* REMOVE */}
+                      {/* ================= ACTIONS ================= */}
 
-                      <button
-                        type="button"
-                        onClick={() =>
-                          tab === "plan"
-                            ? removePlan(workout.id)
-                            : removeSaved(workout.id)
-                        }
-                        className="rounded-lg border border-[#292929] p-2 text-[#777] transition hover:border-[#666] hover:text-white"
-                        aria-label={`Remove ${workout.name}`}
-                      >
-                        <X size={17} />
-                      </button>
-                    </div>
+                      <div className="flex shrink-0 flex-wrap items-center gap-2 lg:justify-end">
 
-                    {/* ================= REQUIRED STATS ================= */}
+                        {/* VIEW DETAILS — BOTH PLAN AND SAVED */}
 
-                    <div className="mt-5 flex flex-wrap gap-5 border-t border-[#292929] pt-4">
+                        <Link
+                          href={`/workout/${workout.id}`}
+                          className="btn btn-dark rounded-lg px-4 py-3 text-xs"
+                        >
+                          View Details
+                        </Link>
 
-                      {/* DURATION */}
+                        {/* MARK AS DONE — PLAN ONLY */}
 
-                      <div className="flex items-center gap-2 text-xs text-[#999]">
-                        <Clock3 size={15} />
-                        <span>
-                          {workout.duration} min
-                        </span>
-                      </div>
+                        {tab === "plan" && (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              markDone(workout.id)
+                            }
+                            className="btn btn-primary rounded-lg px-4 py-3 text-xs"
+                          >
+                            <Check size={15} />
+                            Mark as Done
+                          </button>
+                        )}
 
-                      {/* CALORIES */}
+                        {/* X REMOVE — BOTH PLAN AND SAVED */}
 
-                      <div className="flex items-center gap-2 text-xs text-[#999]">
-                        <Flame size={15} />
-                        <span>
-                          {workout.caloriesBurned} kcal
-                        </span>
-                      </div>
-
-                      {/* RATING */}
-
-                      <div className="flex items-center gap-2 text-xs text-[#999]">
-                        <Star size={15} />
-                        <span>
-                          {workout.rating}
-                        </span>
-                      </div>
-
-                    </div>
-
-                    {/* ================= BUTTONS ================= */}
-
-                    <div className="mt-5 flex flex-wrap gap-2">
-
-                      {/* VIEW DETAILS */}
-
-                      <Link
-                        href={`/workout/${workout.id}`}
-                        className="btn btn-dark rounded-lg px-4 py-3 text-xs"
-                      >
-                        View Details
-                      </Link>
-
-                      {/* MARK AS DONE */}
-
-                      {tab === "plan" && (
                         <button
                           type="button"
                           onClick={() =>
-                            markDone(workout.id)
+                            tab === "plan"
+                              ? removePlan(workout.id)
+                              : removeSaved(workout.id)
                           }
-                          className="btn btn-primary rounded-lg px-4 py-3 text-xs"
+                          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[#444] bg-[#111] text-[#888] transition hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-300"
+                          aria-label={`Remove ${workout.name}`}
+                          title="Remove"
                         >
-                          <Check size={15} />
-                          Mark as Done
+                          <X size={17} />
                         </button>
-                      )}
 
+                      </div>
                     </div>
                   </div>
                 </div>
