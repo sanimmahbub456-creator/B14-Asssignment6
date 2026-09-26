@@ -1,6 +1,6 @@
-# B14-A6-Fit-Log
+# B14-Asssignment6
 
-A modern, responsive workout library and daily workout planning application built with Next.js, React, TypeScript, and Tailwind CSS.FitLog helps users browse workouts, view detailed exercise information, save workouts for later, and build a daily workout plan with a maximum of five exercises.
+A modern, responsive workout library and daily workout planning application built with Next.js, React, TypeScript, and Tailwind CSS.FitLog helps users browse workouts, view detailed exercise information, save workouts for later, an Bd build a daily workout plan with a maximum of five exercises.
 
 ---
 
@@ -48,14 +48,11 @@ The interface is designed to be responsive across mobile, tablet, and desktop de
 ---
 
 ## 🔗 API
-
 FitLog uses the following REST API:
-
-### All Workouts
 https://api.abcz.workers.dev/api/fitlog
 The application fetches workout data dynamically from the API.
 
- ## Features
+## Features
 # 1. Responsive Navigation
 FitLog logo
 Workout navigation
@@ -82,9 +79,7 @@ Calories
 Rating
 View workout details
 # 4. Workout Details
-
 Each workout detail page includes:
-
 Large workout image
 Workout title
 Muscle group tags
@@ -99,10 +94,9 @@ Rating
 Exercise instructions
 Add to Today's Plan
 Save for Later
+
 # 5. My Plan
-
 The My Plan page includes:
-
 Today's workout plan
 Saved workouts
 Exercise counter
@@ -120,31 +114,24 @@ Rating
 View Details
 Mark as Done
 Remove workout
+
 # 6. Saved Workouts
-
 Users can save workouts for later.
-
 Saved workouts are available from the Saved tab on the My Plan page.
 
 # 7. Mark as Done
-
 Users can mark a workout as completed.
-
 The workout is removed from Today's Plan and a confirmation toast is displayed.
 
 # 8. LocalStorage
-
 FitLog stores:
-
 Today's workout plan
 Saved workouts
 
 in the browser's localStorage so the user's selections remain after refreshing the page.
 
 # 9. Toast Notifications
-
 The application provides feedback for actions such as:
-
 Workout added to plan
 Workout removed
 Workout saved
@@ -153,18 +140,16 @@ Workout marked as done
 Plan limit reached
 
 # 10. Loading State
-
 A custom loading screen is provided while pages are loading.
 
 # 11. Custom 404 Page
-
 FitLog includes a custom 404 page for unavailable routes an
 # 12. Responsive Design
 The application is designed for:
-
 Mobile
 Tablet
 Desktop
+
 ## 📂 Project Structure
 ----------
 B14-A6-Fit-Log/
@@ -210,7 +195,7 @@ B14-A6-Fit-Log/
 1. Clone the repository
 git clone https://github.com/sanimmahbub456-creator/B14-Asssignment6.git
 2. Go to the project directory
-cd B14-A6-Fit-Log
+  cd B14-Asssignment6
 3. Install dependencies
 npm install
 4. Start the development server
