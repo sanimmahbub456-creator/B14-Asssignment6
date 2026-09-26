@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import {
   Check,
@@ -26,9 +27,24 @@ export default function Plan() {
     markDone,
   } = useStore();
 
+  const searchParams = useSearchParams();
+
   const [tab, setTab] = useState<Tab>("plan");
   const [sortBy, setSortBy] =
     useState<SortOption>("duration");
+
+  // Open the correct tab from the URL.
+  // /my-plan       -> Today's Plan
+  // /my-plan?tab=saved -> Saved
+  useEffect(() => {
+    const selectedTab = searchParams.get("tab");
+
+    if (selectedTab === "saved") {
+      setTab("saved");
+    } else {
+      setTab("plan");
+    }
+  }, [searchParams]);
 
   const activeWorkouts =
     tab === "plan" ? plan : saved;
@@ -183,7 +199,7 @@ export default function Plan() {
 
         {activeWorkouts.length === 0 && (
           <div className="mt-8 rounded-2xl border border-[#292929] bg-[#111] px-6 py-20 text-center">
-            <h2 className="display text-5xl font-black uppercase leading-none text-white sm:text-7xl">
+            <h2 className="display text-3xl font-black uppercase leading-none text-white sm:text-5xl">
               NOTHING HERE YET
             </h2>
 
@@ -224,7 +240,6 @@ export default function Plan() {
                   {/* ================= CARD CONTENT ================= */}
 
                   <div className="flex min-w-0 flex-1 flex-col p-5">
-
                     <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
 
                       {/* ================= WORKOUT INFO ================= */}
@@ -261,7 +276,6 @@ export default function Plan() {
                         {/* STATS */}
 
                         <div className="mt-5 flex flex-wrap gap-5 border-t border-[#292929] pt-4">
-
                           <div className="flex items-center gap-2 text-xs text-[#999]">
                             <Clock3 size={15} />
                             <span>
@@ -282,7 +296,6 @@ export default function Plan() {
                               {workout.rating}
                             </span>
                           </div>
-
                         </div>
                       </div>
 
@@ -290,7 +303,7 @@ export default function Plan() {
 
                       <div className="flex shrink-0 flex-wrap items-center gap-2 lg:justify-end">
 
-                        {/* VIEW DETAILS — BOTH PLAN AND SAVED */}
+                        {/* VIEW DETAILS */}
 
                         <Link
                           href={`/workout/${workout.id}`}
@@ -314,7 +327,7 @@ export default function Plan() {
                           </button>
                         )}
 
-                        {/* X REMOVE — BOTH PLAN AND SAVED */}
+                        {/* REMOVE */}
 
                         <button
                           type="button"
