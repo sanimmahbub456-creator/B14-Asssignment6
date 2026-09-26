@@ -8,9 +8,9 @@ FitLog helps users browse workouts, view detailed exercise information, save wor
 
 ## 🚀 Live Project
 
-Live Demo: Add your deployed URL here
+Live Demo:https://serene-crumble-d240fb.netlify.app/
 
-GitHub Repository: Add your GitHub repository URL here
+GitHub Repository: https://github.com/sanimmahbub456-creator/B14-Asssignment6
 
 ---
 
