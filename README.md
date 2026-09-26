@@ -1,6 +1,6 @@
 # B14-Asssignment6
 
-A modern, responsive workout library and daily workout planning application built with Next.js, React, TypeScript, and Tailwind CSS.FitLog helps users browse workouts, view detailed exercise information, save workouts for later, an Bd build a daily workout plan with a maximum of five exercises.
+A modern, responsive workout library and daily workout planning application built with Next.js, React, TypeScript, and Tailwind CSS. FitLog helps users browse workouts, view detailed exercise information, save workouts for later, and build a daily workout plan with a maximum of five exercises.
 
 ---
 
