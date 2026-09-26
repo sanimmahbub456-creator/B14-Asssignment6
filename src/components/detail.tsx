@@ -7,6 +7,36 @@ import { Bookmark, Check } from "./icons";
 
 import { Workout } from "@/lib/types";
 
+function getTagClass(group: string) {
+  const value = group.toLowerCase();
+
+  if (value.includes("chest")) {
+    return "border-red-500/30 bg-red-500/10 text-red-300";
+  }
+
+  if (value.includes("back")) {
+    return "border-blue-500/30 bg-blue-500/10 text-blue-300";
+  }
+
+  if (value.includes("leg")) {
+    return "border-green-500/30 bg-green-500/10 text-green-300";
+  }
+
+  if (value.includes("arm")) {
+    return "border-purple-500/30 bg-purple-500/10 text-purple-300";
+  }
+
+  if (value.includes("shoulder")) {
+    return "border-yellow-500/30 bg-yellow-500/10 text-yellow-300";
+  }
+
+  if (value.includes("core")) {
+    return "border-cyan-500/30 bg-cyan-500/10 text-cyan-300";
+  }
+
+  return "border-[#3a3a3a] bg-[#161616] text-[#cfcfcf]";
+}
+
 export default function Detail({ w }: { w: Workout }) {
   const { addPlan, addSaved, plan, saved } = useStore();
 
@@ -24,8 +54,7 @@ export default function Detail({ w }: { w: Workout }) {
 
   return (
     <main className="container py-10 md:py-14">
-      {/* ================= BACK ================= */}
-
+      {/* Back */}
       <Link
         href="/"
         className="inline-flex text-xs font-black uppercase tracking-[0.2em] text-[#777] transition hover:text-white"
@@ -47,32 +76,31 @@ export default function Detail({ w }: { w: Workout }) {
         {/* ================= DETAILS ================= */}
 
         <div className="py-2">
-          {/* MUSCLE TAGS */}
+          {/* TITLE FIRST */}
+          <h1 className="text-3xl font-bold uppercase leading-tight sm:text-4xl">
+            {w.name}
+          </h1>
 
-          <div className="flex flex-wrap gap-2">
+          {/* DESCRIPTION SECOND */}
+          <p className="mt-6 max-w-2xl text-base leading-7 text-[#999]">
+            {w.description}
+          </p>
+
+          {/* COLORFUL MUSCLE BADGES THIRD */}
+          <div className="mt-6 flex flex-wrap gap-2">
             {w.muscleGroups.map((group) => (
               <span
                 key={group}
-                className="tag rounded-full px-3 py-1 text-[10px] font-black uppercase"
+                className={`rounded-full border px-3 py-1 text-[10px] font-black uppercase ${getTagClass(
+                  group
+                )}`}
               >
                 {group}
               </span>
             ))}
           </div>
 
-          {/* TITLE */}
-
-          <h1 className="mt-5 text-3xl font-bold uppercase leading-tight sm:text-4xl">
-            {w.name}
-          </h1>
-
-          {/* DESCRIPTION */}
-
-          <p className="mt-6 max-w-2xl text-base leading-7 text-[#999]">
-            {w.description}
-          </p>
-
-          {/* ================= SPECIFICATIONS ================= */}
+          {/* ================= KEY SPECS ================= */}
 
           <div className="mt-8 overflow-hidden rounded-2xl border border-[#292929] bg-[#101010]">
             <Spec
@@ -126,7 +154,10 @@ export default function Detail({ w }: { w: Workout }) {
                     className="flex gap-4 rounded-xl border border-[#252525] bg-[#101010] p-4"
                   >
                     <span className="acid min-w-[28px] font-black">
-                      {String(index + 1).padStart(2, "0")}
+                      {String(index + 1).padStart(
+                        2,
+                        "0"
+                      )}
                     </span>
 
                     <span className="text-sm leading-6 text-[#bbb]">
@@ -138,7 +169,7 @@ export default function Detail({ w }: { w: Workout }) {
             </ol>
           </div>
 
-          {/* ================= ACTION BUTTONS ================= */}
+          {/* ================= ACTIONS ================= */}
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <button
@@ -148,7 +179,10 @@ export default function Detail({ w }: { w: Workout }) {
               className="btn btn-primary rounded-lg px-5 py-4 text-sm disabled:cursor-not-allowed disabled:opacity-40"
             >
               <Check size={17} />
-              Add to today's plan
+
+              {inPlan
+                ? "Already in today's plan"
+                : "Add to today's plan"}
             </button>
 
             <button
@@ -157,7 +191,10 @@ export default function Detail({ w }: { w: Workout }) {
               className="btn btn-dark rounded-lg px-5 py-4 text-sm"
             >
               <Bookmark size={17} />
-              {isSaved ? "Saved" : "Save for later"}
+
+              {isSaved
+                ? "Saved"
+                : "Save for later"}
             </button>
           </div>
         </div>
@@ -166,7 +203,7 @@ export default function Detail({ w }: { w: Workout }) {
   );
 }
 
-/* ================= SPECIFICATION ================= */
+/* ================= SPEC ROW ================= */
 
 function Spec({
   label,
