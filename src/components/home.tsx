@@ -82,9 +82,8 @@ export default function Home() {
             </h1> 
  
             <p className="mt-6 max-w-xl text-sm leading-7 text-[#888] sm:text-base"> 
-              A focused workout library built for people who train with 
-              purpose. Find the right lift, learn the movement, and build 
-              today's plan. 
+              FitLog is a dark, no-nonsense gym companion: pick a lift, lock it into
+  today's plan, and watch the week's work add up.
             </p> 
  
             <Link 
