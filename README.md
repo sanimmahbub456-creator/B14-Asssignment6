@@ -143,7 +143,7 @@ Plan limit reached
 A custom loading screen is provided while pages are loading.
 
 # 11. Custom 404 Page
-FitLog includes a custom 404 page for unavailable routes an
+FitLog includes a custom 404 page for unavailable routes and workouts.
 # 12. Responsive Design
 The application is designed for:
 Mobile
@@ -152,7 +152,7 @@ Desktop
 
 ## 📂 Project Structure
 ----------
-B14-A6-Fit-Log/
+B14-Asssignment6/
 │
 ├── public/
 │   ├── logo.png
@@ -195,13 +195,14 @@ B14-A6-Fit-Log/
 1. Clone the repository
 git clone https://github.com/sanimmahbub456-creator/B14-Asssignment6.git
 2. Go to the project directory
-  cd B14-Asssignment6
+   cd B14-Asssignment6
 3. Install dependencies
 npm install
 4. Start the development server
 npm run dev
 Open:
 http://localhost:3000
+
 🏗️ Production Build
 To check the production build:
 npm run build
@@ -268,7 +269,6 @@ LocalStorage
 Responsive UI development
 Tailwind CSS
 Git and GitHub
-
 The project was implemented and customized for the FitLog assignment based on my own understanding of the technologies.
 
 ## 🙏 Acknowledgements
