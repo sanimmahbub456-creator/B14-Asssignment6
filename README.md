@@ -304,4 +304,5 @@ This project is an educational implementation and is not presented as an origina
 
 👨‍💻 Author
 Mahbubul Alam
+
 FitLog — Workout Library
