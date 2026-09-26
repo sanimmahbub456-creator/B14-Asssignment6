@@ -208,7 +208,7 @@ B14-A6-Fit-Log/
 -----
 ## 💻 Getting Started
 1. Clone the repository
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/sanimmahbub456-creator/B14-Asssignment6.git
 2. Go to the project directory
 cd B14-A6-Fit-Log
 3. Install dependencies
@@ -222,8 +222,8 @@ To check the production build:
 npm run build
 To start the production server:
 npm start
-🎨 Design
 
+## 🎨 Design
 # FitLog uses a dark fitness-focused visual style with:
 Black background
 White typography
@@ -232,6 +232,7 @@ Strong uppercase headings
 Minimal card design
 Responsive layouts
 Clear workout statistics
+
 ## 📱 Responsive Behavior
 The interface adapts to different screen sizes.
 Desktop
@@ -248,6 +249,7 @@ Mobile navigation
 Stacked action buttons
 Responsive typography
 Touch-friendly controls
+
 ## 📋 Assignment Requirements Covered
  Responsive design
  Navbar
@@ -267,12 +269,10 @@ Touch-friendly controls
  Responsive mobile/tablet/desktop layout
  Git/GitHub version control
  Production build
+ 
 ##  Learning & Implementation
-
 This project was developed as part of a Programming Hero assignment.
-
 I used learning resources and examples to understand:
-
 React fundamentals
 Next.js App Router
 TypeScript
