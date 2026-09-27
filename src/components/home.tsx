@@ -105,7 +105,7 @@ export default function Home() {
                   text-xl
                   font-black
                   uppercase
-                  leading-[0.9]
+                  leading-[1]
                   sm:text-2xl
                   md:text-2xl
                   lg:text-3xl
