@@ -48,10 +48,16 @@ The interface is designed to be responsive across mobile, tablet, and desktop de
 ---
 
 ## 🔗 API
-FitLog uses the following REST API:
-https://api.abcz.workers.dev/api/fitlog
-The application fetches workout data dynamically from the API.
+Fitlog Api: All data: https://api.abcz.workers.dev/api/fitlog
+Details/Single Data: https://api.abcz.workers.dev/api/fitlog/:id
 
+### API Availability
+The project was developed using the FitLog API provided with the assignment.
+The alternative API endpoint was used when required for reliable data access.
+- Primary API:
+  https://api.abcz.workers.dev/api/fitlog
+- Alternative API:
+  https://api.api-store.workers.dev/api/fitlog
 ## Features
 ### Responsive Navigation
 - FitLog Logo
