@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useMemo, useState } from "react";
 
 import {
   Check,
@@ -19,81 +18,50 @@ type Tab = "plan" | "saved";
 type SortOption = "duration" | "calories" | "rating";
 
 export default function Plan() {
-  const {
-    plan,
-    saved,
-    removePlan,
-    removeSaved,
-    markDone,
-  } = useStore();
-
-  const searchParams = useSearchParams();
+  const { plan, saved, removePlan, removeSaved, markDone } = useStore();
 
   const [tab, setTab] = useState<Tab>("plan");
-  const [sortBy, setSortBy] =
-    useState<SortOption>("duration");
+  const [sortBy, setSortBy] = useState<SortOption>("duration");
 
-  // Open the correct tab from the URL.
-  // /my-plan       -> Today's Plan
-  // /my-plan?tab=saved -> Saved
-  useEffect(() => {
-    const selectedTab = searchParams.get("tab");
-
-    if (selectedTab === "saved") {
-      setTab("saved");
-    } else {
-      setTab("plan");
-    }
-  }, [searchParams]);
-
-  const activeWorkouts =
-    tab === "plan" ? plan : saved;
+  const activeWorkouts = tab === "plan" ? plan : saved;
 
   const sortedWorkouts = useMemo(() => {
     const workouts = [...activeWorkouts];
 
     if (sortBy === "duration") {
-      return workouts.sort(
-        (a, b) => a.duration - b.duration
-      );
+      return workouts.sort((a, b) => a.duration - b.duration);
     }
 
     if (sortBy === "calories") {
       return workouts.sort(
-        (a, b) =>
-          b.caloriesBurned - a.caloriesBurned
+        (a, b) => b.caloriesBurned - a.caloriesBurned
       );
     }
 
     if (sortBy === "rating") {
-      return workouts.sort(
-        (a, b) => b.rating - a.rating
-      );
+      return workouts.sort((a, b) => b.rating - a.rating);
     }
 
     return workouts;
   }, [activeWorkouts, sortBy]);
 
-  const totalMinutes = plan.reduce(
-    (total, workout) =>
-      total + workout.duration,
+  /* Metrics follow the currently selected tab */
+  const totalMinutes = activeWorkouts.reduce(
+    (total, workout) => total + workout.duration,
     0
   );
 
-  const totalCalories = plan.reduce(
-    (total, workout) =>
-      total + workout.caloriesBurned,
+  const totalCalories = activeWorkouts.reduce(
+    (total, workout) => total + workout.caloriesBurned,
     0
   );
 
   return (
     <main className="min-h-screen bg-[#090909] py-10 md:py-14">
       <div className="container">
-
-        {/* ================= HEADER ================= */}
-
+        {/* PAGE HEADER */}
         <div className="border-b border-[#292929] pb-8">
-          <h1 className="display text-3xl font-black uppercase leading-none sm:text-2xl">
+          <h1 className="display text-2xl font-black uppercase leading-none sm:text-3xl">
             MY PLAN
           </h1>
 
@@ -102,12 +70,11 @@ export default function Plan() {
           </p>
         </div>
 
-        {/* ================= METRICS ================= */}
-
+        {/* METRICS */}
         <div className="mt-8 grid grid-cols-3 gap-3">
           <Metric
             label="Exercises"
-            value={plan.length}
+            value={activeWorkouts.length}
           />
 
           <Metric
@@ -121,8 +88,7 @@ export default function Plan() {
           />
         </div>
 
-        {/* ================= TABS ================= */}
-
+        {/* TABS */}
         <div className="mt-10 flex gap-2 border-b border-[#292929]">
           <button
             type="button"
@@ -149,16 +115,13 @@ export default function Plan() {
           </button>
         </div>
 
-        {/* ================= SORT ================= */}
-
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        {/* SORT */}
+        <div className="mt-6 flex items-center justify-between gap-4">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-[#777]">
-            {tab === "plan"
-              ? "Today's Plan"
-              : "Saved Workouts"}
+            {tab === "plan" ? "Today's Plan" : "Saved Workouts"}
           </p>
 
-          <div className="flex items-center gap-2">
+          <div className="relative flex items-center gap-2">
             <span className="text-xs font-black uppercase tracking-wider text-[#777]">
               Sort By
             </span>
@@ -167,24 +130,14 @@ export default function Plan() {
               <select
                 value={sortBy}
                 onChange={(event) =>
-                  setSortBy(
-                    event.target.value as SortOption
-                  )
+                  setSortBy(event.target.value as SortOption)
                 }
                 className="appearance-none rounded-lg border border-[#444] bg-[#111] px-4 py-3 pr-10 text-xs font-black uppercase tracking-wider text-white outline-none transition hover:border-[#777] focus:border-[var(--acid)]"
                 aria-label="Sort workouts"
               >
-                <option value="duration">
-                  Duration
-                </option>
-
-                <option value="calories">
-                  Calories
-                </option>
-
-                <option value="rating">
-                  Rating
-                </option>
+                <option value="duration">Duration</option>
+                <option value="calories">Calories</option>
+                <option value="rating">Rating</option>
               </select>
 
               <ChevronDown
@@ -195,11 +148,10 @@ export default function Plan() {
           </div>
         </div>
 
-        {/* ================= EMPTY STATE ================= */}
-
+        {/* EMPTY STATE */}
         {activeWorkouts.length === 0 && (
           <div className="mt-8 rounded-2xl border border-[#292929] bg-[#111] px-6 py-20 text-center">
-            <h2 className="display text-xl font-black uppercase leading-none text-white sm:text-2xl">
+            <h2 className="display text-2xl font-black uppercase leading-none text-white sm:text-3xl">
               NOTHING HERE YET
             </h2>
 
@@ -216,8 +168,7 @@ export default function Plan() {
           </div>
         )}
 
-        {/* ================= WORKOUT CARDS ================= */}
-
+        {/* WORKOUT LIST */}
         {sortedWorkouts.length > 0 && (
           <div className="mt-8 space-y-4">
             {sortedWorkouts.map((workout) => (
@@ -226,9 +177,7 @@ export default function Plan() {
                 className="card overflow-hidden rounded-2xl"
               >
                 <div className="flex flex-col sm:flex-row">
-
-                  {/* ================= IMAGE ================= */}
-
+                  {/* IMAGE */}
                   <div className="h-48 w-full shrink-0 sm:h-auto sm:w-56">
                     <img
                       src={workout.image}
@@ -237,17 +186,12 @@ export default function Plan() {
                     />
                   </div>
 
-                  {/* ================= CARD CONTENT ================= */}
-
-                  <div className="flex min-w-0 flex-1 flex-col p-5">
-                    <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
-
-                      {/* ================= WORKOUT INFO ================= */}
-
-                      <div className="min-w-0 flex-1">
-
-                        {/* MUSCLE GROUPS */}
-
+                  {/* CONTENT */}
+                  <div className="flex flex-1 flex-col p-5">
+                    {/* TITLE + ACTIONS */}
+                    <div className="flex items-start justify-between gap-4">
+                      {/* WORKOUT INFO */}
+                      <div className="min-w-0">
                         <div className="flex flex-wrap gap-2">
                           {workout.muscleGroups
                             .slice(0, 3)
@@ -261,50 +205,18 @@ export default function Plan() {
                             ))}
                         </div>
 
-                        {/* WORKOUT NAME */}
-
                         <h2 className="mt-3 text-xl font-black uppercase leading-tight">
                           {workout.name}
                         </h2>
 
-                        {/* EQUIPMENT */}
-
                         <p className="mt-1 text-xs text-[#777]">
                           {workout.equipment}
                         </p>
-
-                        {/* STATS */}
-
-                        <div className="mt-5 flex flex-wrap gap-5 border-t border-[#292929] pt-4">
-                          <div className="flex items-center gap-2 text-xs text-[#999]">
-                            <Clock3 size={15} />
-                            <span>
-                              {workout.duration} min
-                            </span>
-                          </div>
-
-                          <div className="flex items-center gap-2 text-xs text-[#999]">
-                            <Flame size={15} />
-                            <span>
-                              {workout.caloriesBurned} kcal
-                            </span>
-                          </div>
-
-                          <div className="flex items-center gap-2 text-xs text-[#999]">
-                            <Star size={15} />
-                            <span>
-                              {workout.rating}
-                            </span>
-                          </div>
-                        </div>
                       </div>
 
-                      {/* ================= ACTIONS ================= */}
-
-                      <div className="flex shrink-0 flex-wrap items-center gap-2 lg:justify-end">
-
+                      {/* ACTIONS */}
+                      <div className="flex shrink-0 items-center gap-2">
                         {/* VIEW DETAILS */}
-
                         <Link
                           href={`/workout/${workout.id}`}
                           className="btn btn-dark rounded-lg px-4 py-3 text-xs"
@@ -313,22 +225,18 @@ export default function Plan() {
                         </Link>
 
                         {/* MARK AS DONE — PLAN ONLY */}
-
                         {tab === "plan" && (
                           <button
                             type="button"
-                            onClick={() =>
-                              markDone(workout.id)
-                            }
+                            onClick={() => markDone(workout.id)}
                             className="btn btn-primary rounded-lg px-4 py-3 text-xs"
                           >
                             <Check size={15} />
-                            Mark as Done
+                            <span>Mark as Done</span>
                           </button>
                         )}
 
                         {/* REMOVE */}
-
                         <button
                           type="button"
                           onClick={() =>
@@ -336,13 +244,29 @@ export default function Plan() {
                               ? removePlan(workout.id)
                               : removeSaved(workout.id)
                           }
-                          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[#444] bg-[#111] text-[#888] transition hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-300"
+                          className="shrink-0 rounded-lg border border-[#292929] p-3 text-[#777] transition hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-400"
                           aria-label={`Remove ${workout.name}`}
-                          title="Remove"
                         >
-                          <X size={17} />
+                          <X size={18} />
                         </button>
+                      </div>
+                    </div>
 
+                    {/* STATS */}
+                    <div className="mt-5 flex flex-wrap gap-5 pt-4">
+                      <div className="flex items-center gap-2 text-xs text-[#999]">
+                        <Clock3 size={15} />
+                        <span>{workout.duration} min</span>
+                      </div>
+
+                      <div className="flex items-center gap-2 text-xs text-[#999]">
+                        <Flame size={15} />
+                        <span>{workout.caloriesBurned} kcal</span>
+                      </div>
+
+                      <div className="flex items-center gap-2 text-xs text-[#999]">
+                        <Star size={15} />
+                        <span>{workout.rating}</span>
                       </div>
                     </div>
                   </div>
@@ -356,8 +280,7 @@ export default function Plan() {
   );
 }
 
-/* ================= METRIC ================= */
-
+/* METRIC */
 function Metric({
   label,
   value,
