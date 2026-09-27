@@ -6,7 +6,7 @@ A modern, responsive workout library and daily workout planning application buil
 
 ## 🚀 Live Project
 
-Live Demo:https://serene-crumble-d240fb.netlify.app/
+Live Demo:https://reliable-kashata-1cf332.netlify.app/
 
 GitHub Repository: https://github.com/sanimmahbub456-creator/B14-Asssignment6
 
