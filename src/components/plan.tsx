@@ -93,7 +93,7 @@ export default function Plan() {
         {/* ================= HEADER ================= */}
 
         <div className="border-b border-[#292929] pb-8">
-          <h1 className="display text-6xl font-black uppercase leading-none sm:text-7xl">
+          <h1 className="display text-3xl font-black uppercase leading-none sm:text-2xl">
             MY PLAN
           </h1>
 
@@ -199,7 +199,7 @@ export default function Plan() {
 
         {activeWorkouts.length === 0 && (
           <div className="mt-8 rounded-2xl border border-[#292929] bg-[#111] px-6 py-20 text-center">
-            <h2 className="display text-3xl font-black uppercase leading-none text-white sm:text-5xl">
+            <h2 className="display text-xl font-black uppercase leading-none text-white sm:text-2xl">
               NOTHING HERE YET
             </h2>
 

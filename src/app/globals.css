@@ -16,9 +16,12 @@
   --color-panel: var(--panel);
   --color-line: var(--line);
   --color-muted: var(--muted);
-
   --font-sans: Arial, Helvetica, sans-serif;
 }
+
+/* ------------------------------
+   Base
+------------------------------ */
 
 * {
   box-sizing: border-box;
@@ -26,23 +29,38 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  min-width: 320px;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
-/* FitLog typography */
-
-.display {
-  font-family: "Arial Narrow", Impact, sans-serif;
-  letter-spacing: -0.045em;
+button,
+input,
+select,
+textarea {
+  font: inherit;
 }
 
-/* Main container */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ------------------------------
+   Layout
+------------------------------ */
 
 .container {
   width: min(1180px, calc(100% - 32px));
@@ -50,7 +68,14 @@ body {
   margin-right: auto;
 }
 
-/* Colors */
+/* ------------------------------
+   Typography
+------------------------------ */
+
+.display {
+  font-family: "Arial Narrow", Impact, sans-serif;
+  letter-spacing: -0.045em;
+}
 
 .acid {
   color: var(--acid);
@@ -60,7 +85,9 @@ body {
   color: var(--muted);
 }
 
-/* Buttons */
+/* ------------------------------
+   Buttons
+------------------------------ */
 
 .btn {
   display: inline-flex;
@@ -73,7 +100,8 @@ body {
   transition:
     transform 0.2s ease,
     filter 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .btn-primary {
@@ -86,6 +114,10 @@ body {
   transform: translateY(-1px);
 }
 
+.btn-primary:active {
+  transform: translateY(0);
+}
+
 .btn-dark {
   background: #171717;
   border: 1px solid #333333;
@@ -96,7 +128,13 @@ body {
   border-color: #666666;
 }
 
-/* Tags */
+.btn:disabled {
+  transform: none;
+}
+
+/* ------------------------------
+   Tags
+------------------------------ */
 
 .tag {
   border: 1px solid #3a3a3a;
@@ -104,7 +142,9 @@ body {
   background: #161616;
 }
 
-/* Cards */
+/* ------------------------------
+   Cards
+------------------------------ */
 
 .card {
   background: var(--panel);
@@ -126,7 +166,9 @@ body {
   background: #151515;
 }
 
-/* Loading */
+/* ------------------------------
+   Loading
+------------------------------ */
 
 .loading-spinner {
   width: 32px;
@@ -143,42 +185,141 @@ body {
   }
 }
 
-/* Toast */
+/* ------------------------------
+   Toast Notification
+   Top-right below navbar
+------------------------------ */
 
 .toast-fitlog {
   position: fixed;
+  top: 82px;
   right: 20px;
-  bottom: 20px;
   z-index: 100;
+  width: max-content;
+  max-width: min(360px, calc(100vw - 40px));
+
   background: #171717;
-  color: white;
+  color: #ffffff;
+
   border: 1px solid #3a3a3a;
   border-left: 4px solid var(--acid);
+
   padding: 12px 18px;
   border-radius: 8px;
+
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+  font-size: 13px;
+  line-height: 1.45;
 }
 
-/* Images */
+/* ------------------------------
+   Tablet
+------------------------------ */
 
-img {
-  max-width: 100%;
+@media (max-width: 1024px) {
+  .container {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .display {
+    letter-spacing: -0.04em;
+  }
+
+  .toast-fitlog {
+    top: 78px;
+    right: 16px;
+  }
 }
 
-/* Mobile */
+/* ------------------------------
+   Mobile
+------------------------------ */
 
 @media (max-width: 768px) {
   .container {
-    width: min(100% - 24px, 1180px);
+    width: calc(100% - 24px);
   }
 
   .display {
     letter-spacing: -0.035em;
   }
+
+  .workout-card:hover {
+    transform: none;
+  }
+
+  .toast-fitlog {
+    top: 112px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+    max-width: none;
+
+    padding: 11px 14px;
+    font-size: 12px;
+  }
 }
+
+/* ------------------------------
+   Small Mobile
+------------------------------ */
 
 @media (max-width: 480px) {
   .container {
     width: calc(100% - 20px);
+  }
+
+  .display {
+    letter-spacing: -0.025em;
+  }
+
+  .btn {
+    min-height: 44px;
+  }
+
+  .toast-fitlog {
+    top: 108px;
+    right: 10px;
+    left: 10px;
+
+    padding: 10px 13px;
+    border-radius: 7px;
+
+    font-size: 12px;
+  }
+}
+
+/* ------------------------------
+   Very Small Screens
+------------------------------ */
+
+@media (max-width: 360px) {
+  .container {
+    width: calc(100% - 16px);
+  }
+
+  .toast-fitlog {
+    top: 106px;
+    right: 8px;
+    left: 8px;
+  }
+}
+
+/* ------------------------------
+   Reduced Motion
+------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
