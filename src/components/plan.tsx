@@ -189,7 +189,7 @@ export default function Plan() {
                   {/* CONTENT */}
                   <div className="flex flex-1 flex-col p-5">
                     {/* TITLE + ACTIONS */}
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                       {/* WORKOUT INFO */}
                       <div className="min-w-0">
                         <div className="flex flex-wrap gap-2">
@@ -215,11 +215,11 @@ export default function Plan() {
                       </div>
 
                       {/* ACTIONS */}
-                      <div className="flex shrink-0 items-center gap-2">
+                      <div className="flex w-full items-center gap-2 sm:w-auto">
                         {/* VIEW DETAILS */}
                         <Link
                           href={`/workout/${workout.id}`}
-                          className="btn btn-dark rounded-lg px-4 py-3 text-xs"
+                          className="btn btn-dark flex-1 rounded-lg px-3 py-3 text-[10px] sm:flex-none sm:px-4 sm:text-xs"
                         >
                           View Details
                         </Link>
@@ -229,7 +229,7 @@ export default function Plan() {
                           <button
                             type="button"
                             onClick={() => markDone(workout.id)}
-                            className="btn btn-primary rounded-lg px-4 py-3 text-xs"
+                            className="btn btn-primary flex-1 rounded-lg px-3 py-3 text-[10px] sm:flex-none sm:px-4 sm:text-xs"
                           >
                             <Check size={15} />
                             <span>Mark as Done</span>
